@@ -166,23 +166,8 @@ export function Layout({children}: {children?: React.ReactNode}) {
 }
 
 export default function App() {
-  const data = useRouteLoaderData<RootLoader>('root');
-
-  if (!data) {
-    return <Outlet />;
-  }
-
-  return (
-    <Analytics.Provider
-      cart={data.cart}
-      shop={data.shop}
-      consent={data.consent}
-    >
-      <PageLayout {...data}>
-        <Outlet />
-      </PageLayout>
-    </Analytics.Provider>
-  );
+  // never renders; Hydrogen/Remix will only run loaders that redirect
+  return null;
 }
 
 export function ErrorBoundary() {
